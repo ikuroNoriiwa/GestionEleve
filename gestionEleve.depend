@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1581858851 source:c:\users\mathieu\documents\dev\gestioneleve\gestioneleve\main.c
+	<stdio.h>
+	<stdlib.h>
+	"defStruct.h"
+	"APP/APP_creationEleve.h"
+
+1581538056 source:c:\users\mathieu\documents\dev\gestioneleve\gestioneleve\ihm\ihm_menu.c
+
+1581540152 source:c:\users\mathieu\documents\dev\gestioneleve\gestioneleve\app\app_creationeleve.c
+	<stdlib.h>
+	<stdlib.h>
+	"../defStruct.h"
+
+1581539847 c:\users\mathieu\documents\dev\gestioneleve\gestioneleve\defstruct.h
+
+1581858595 c:\users\mathieu\documents\dev\gestioneleve\gestioneleve\app\app_creationeleve.h
+
