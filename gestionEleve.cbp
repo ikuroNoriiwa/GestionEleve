@@ -31,6 +31,17 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="APP/APP_creationEleve.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="APP/APP_creationEleve.h" />
+		<Unit filename="DATA/DATA_save.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="IHM/IHM_menu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="defStruct.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

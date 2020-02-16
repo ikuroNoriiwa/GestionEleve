@@ -16,3 +16,20 @@
 
 1581858595 c:\users\mathieu\documents\dev\gestioneleve\gestioneleve\app\app_creationeleve.h
 
+1581887053 source:c:\users\mathieu\documents\github\gestioneleve\app\app_creationeleve.c
+	<stdlib.h>
+	<stdlib.h>
+	"../defStruct.h"
+
+1581887053 c:\users\mathieu\documents\github\gestioneleve\defstruct.h
+
+1581887053 source:c:\users\mathieu\documents\github\gestioneleve\ihm\ihm_menu.c
+
+1581887053 source:c:\users\mathieu\documents\github\gestioneleve\main.c
+	<stdio.h>
+	<stdlib.h>
+	"defStruct.h"
+	"APP/APP_creationEleve.h"
+
+1581887053 c:\users\mathieu\documents\github\gestioneleve\app\app_creationeleve.h
+
