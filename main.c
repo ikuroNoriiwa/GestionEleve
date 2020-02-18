@@ -9,12 +9,17 @@
  #include <stdlib.h>
  #include "defStruct.h"
  #include "APP/APP_creationEleve.h"
+ #include "DATA/DATA_save.h"
 
  int main(void){
 
      printf(" void");
-     Eleve* newEleve = createEleve("noyelle","mathieu","3SI2");
+     Eleve* newEleve = createEleve("PETIT","Jean","3SI2");
 
      printf("nom : %s \n",newEleve->nom);
-     return EXIT_SUCCESS;
+
+    initDB();
+    //saveEleve(newEleve);
+    getEleve();
+    return EXIT_SUCCESS;
  }
