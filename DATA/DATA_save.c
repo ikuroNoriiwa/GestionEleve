@@ -56,7 +56,7 @@ int createDatabase(){
         {
         sqlite3_free(messageError);
         messageError = NULL;
-    };;;;
+    }
 
     sqlite3_close(db);
 }
