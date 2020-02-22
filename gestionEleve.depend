@@ -25,16 +25,16 @@
 
 1581887053 source:c:\users\mathieu\documents\github\gestioneleve\ihm\ihm_menu.c
 
-1582055643 source:c:\users\mathieu\documents\github\gestioneleve\main.c
+1582363442 source:c:\users\mathieu\documents\github\gestioneleve\main.c
 	<stdio.h>
 	<stdlib.h>
 	"defStruct.h"
-	"APP/APP_creationEleve.h"
+	"APP/APP_creationNotes.h"
 	"DATA/DATA_save.h"
 
 1581887053 c:\users\mathieu\documents\github\gestioneleve\app\app_creationeleve.h
 
-1582056123 source:c:\users\mathieu\documents\github\gestioneleve\data\data_save.c
+1582363273 source:c:\users\mathieu\documents\github\gestioneleve\data\data_save.c
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
@@ -105,4 +105,11 @@
 	<math.h>
 
 1581973069 c:\users\mathieu\documents\github\gestioneleve\data\data_save.h
+
+1582221671 source:c:\users\mathieu\documents\github\gestioneleve\app\app_creationnotes.c
+	<stdlib.h>
+	<stdlib.h>
+	"../defStruct.h"
+
+1582221942 c:\users\mathieu\documents\github\gestioneleve\app\app_creationnotes.h
 
