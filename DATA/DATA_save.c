@@ -80,6 +80,8 @@ void DATA_save__saveEleve(Eleve* tmp){
     char* messageError = NULL;
     int codeRetour = 0;
     char* tmpLower[200];
+    char* tmpLower2[200];
+    char* tmpLower3[200];
 
      if(codeRetour = sqlite3_open_v2("SaveEleveNotes.sql", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL ) != 0){
         printf("[ERROR] DATA_saveEleve()  : %s\n", sqlite3_errmsg(db));
@@ -91,7 +93,7 @@ void DATA_save__saveEleve(Eleve* tmp){
 
     //Insertion de l'eleve
     printf("[DATA_saveEleve] nom : %s , prenom : %s \n",tmp->nom,tmp->prenom);
-    char* query  = sqlite3_mprintf("INSERT INTO Eleve(Nom, Prenom, Promotion) VALUES('%q','%q','%q');",strtolower(tmpLower,tmp->nom), strtolower(tmpLower,tmp->prenom), strtolower(tmpLower,tmp->promotion));
+    char* query  = sqlite3_mprintf("INSERT INTO Eleve(Nom, Prenom, Promotion) VALUES('%q','%q','%q');",strtolower(tmpLower,tmp->nom), strtolower(tmpLower2,tmp->prenom), strtolower(tmpLower3,tmp->promotion));
     codeRetour = sqlite3_exec(db,query, NULL, 0, &messageError );
     if((codeRetour != 0 )&& (messageError =! NULL)){
         sqlite3_free(messageError);
@@ -326,4 +328,59 @@ void DATA_save__supprimerEleve(int idEleve){
     }
 
     sqlite3_close(db);
+}
+
+/**
+ * Récupère Un élèves présents dans la base SaveEleveNotes.sql
+ *
+ * @param idEleve :
+ * @return : 0x001 si problème d'ouverture de la base
+ * ou un Eleve** correspondant à un tableau avec tous les élèves
+ * @author mathieu
+ */
+Eleve* DATA_save__getOneEleve(int idEleve){
+    sqlite3 *db;
+    char* messageError = NULL;
+    int codeRetour = 0;
+    sqlite3_stmt *requete;
+    char* queryCount = sqlite3_mprintf("SELECT COUNT (*) FROM Eleve WHERE pk_ID = '%d';",idEleve);
+    int count = -1;
+    char* query = sqlite3_mprintf("SELECT * FROM Eleve WHERE pk_ID = '%d';",idEleve);
+    Eleve* newEleve = NULL;
+
+
+     if(codeRetour = sqlite3_open_v2("SaveEleveNotes.sql", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL ) != 0){
+        printf("[ERROR] DATA_getOneEleve()  : %s\n", sqlite3_errmsg(db));
+        sqlite3_close(db);
+
+        return 0x001;
+        //[DATA_saveEleve]s
+    }
+    if(!(codeRetour = sqlite3_prepare_v2(db, queryCount, strlen(queryCount), &requete, NULL))){
+        //printf("DATA COUNT : %d\n", sqlite3_step(requete));
+        while(codeRetour == SQLITE_OK || codeRetour == SQLITE_ROW){
+            codeRetour = sqlite3_step(requete);
+
+            if(codeRetour == SQLITE_OK || codeRetour == SQLITE_ROW){
+                count = sqlite3_column_int(requete,0);
+            }
+        }
+        if(count > 0){
+            if(!(codeRetour = sqlite3_prepare_v2(db, query, strlen(query), &requete, NULL))){
+
+                while(codeRetour == SQLITE_OK || codeRetour == SQLITE_ROW){
+                    codeRetour = sqlite3_step(requete);
+                    if(codeRetour == SQLITE_OK || codeRetour == SQLITE_ROW){
+                       // printf("Nom : %s et Prenom : %s et ID =  %d\n ",sqlite3_column_text(requete,1),sqlite3_column_text(requete,2),sqlite3_column_int(requete,0));
+                        newEleve = createEleve(sqlite3_column_text(requete,1),sqlite3_column_text(requete,2), sqlite3_column_text(requete,3),sqlite3_column_int(requete,0));
+                    }
+                }
+            }
+        }else{
+            newEleve = NULL;
+        }
+        sqlite3_finalize(requete);
+    }
+    sqlite3_close(db);
+    return newEleve;
 }

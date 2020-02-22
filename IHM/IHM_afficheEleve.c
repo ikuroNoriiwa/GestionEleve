@@ -77,21 +77,113 @@
     char prenom[80];
     char promotion[80];
     char choix;
+    Eleve* tmp;
+
     printf("\nSaisir le nom : ");
     fgets(nom, 79,stdin);
+    nom[strlen(nom)-1] = '\0';
     printf("\nSaisir le prenom : ");
     fgets(prenom, 79,stdin);
+    prenom[strlen(prenom)-1] = '\0';
     printf("\nSaisir la promotion : ");
     fgets(promotion, 79,stdin);
+    promotion[strlen(promotion)-1] = '\0';
 
     while(choix != 'y' || choix != 'n' ||
           choix != 'Y' || choix != 'N' ||
           choix != 'o' || choix != 'O'   ){
             printf("Etes-vous sur de vouloir entrer l\'eleve %s %s de la promotion %s ? (y ou n)",prenom,nom,promotion);
             choix = getch();
-            printf("char : %c\n",choix);
-            if(choix == 'o' || choix == 'y'){
+            if(choix == 'o' || choix == 'y' ||
+               choix == 'O' || choix == 'Y'){
+                tmp = createEleve(nom,prenom,promotion,0);
+                saveEleves(tmp);
                 break;
             }
           }
+ }
+
+
+ void IHM_afficherEleve__supprimerEleve(){
+     char idSaissie[20];
+     int ret  = 0;
+     Eleve* tmp;
+     int enCours = -1;
+     char choix ;
+
+     while(enCours == -1){
+         printf("\nSaisir l\'ID de l\'eleve a supprimer : ");
+         fgets(idSaissie, 19, stdin);
+         ret = atoi(idSaissie);
+         tmp = APP_creationEleve__getOneEleve(ret);
+        if(ret != 0 ){
+             if(tmp == NULL){
+               // printf("NULL ?? %s\n",tmp->nom);
+               printf("\nAucun eleve ne porte cet Identifiant\n");
+             }else if(tmp != NULL){
+                 while(1){
+                    printf("Etes-vous sur de vouloir supprimer %s %s de la promotion %s ainsi que toutes ses notes ?\n",tmp->prenom, tmp->nom, tmp->promotion);
+                    printf("Attention, cette action est irreversible !! (Y ou N)\n ");
+                    choix = getch();
+                    if(choix == 'o' || choix == 'y' ||
+                        choix == 'O' || choix == 'Y'){
+                        APP_creationEleve__supprimerEleve(ret);
+                        enCours = 9;
+                        break;
+                    }else if(choix == 'n' || choix == 'N'){
+                        printf("Suppression annulee\n");
+                        enCours = 12;
+                        break;
+                    }
+                 }
+             }
+             //break;
+        }else if(ret == 0){
+            enCours = 10;
+            break;
+        }
+     }
+ }
+
+ void IHM_afficheEleve__modifierEleve(int idEleve){
+    har idSaissie[20];
+     int ret  = 0;
+     Eleve* tmp;
+     int enCours = -1;
+     char choix ;
+     int aModifier ;
+
+     while(enCours == -1){
+         printf("\nSaisir l\'ID de l\'eleve a modifier : ");
+         fgets(idSaissie, 19, stdin);
+         ret = atoi(idSaissie);
+         tmp = APP_creationEleve__getOneEleve(ret);
+        if(ret != 0 ){
+             if(tmp == NULL){
+               // printf("NULL ?? %s\n",tmp->nom);
+               printf("\nAucun eleve ne porte cet Identifiant\n");
+             }else if(tmp != NULL){
+                 while(1){
+                    printf("Etes-vous sur de vouloir modifier %s %s de la promotion %s ?\n",tmp->prenom, tmp->nom, tmp->promotion);
+                    printf("Attention, cette action est irreversible !! (Y ou N)\n ");
+                    choix = getch();
+                    if(choix == 'o' || choix == 'y' ||
+                        choix == 'O' || choix == 'Y'){
+                        //APP_creationEleve__supprimerEleve(ret);
+                        enCours = 9;
+                        break;
+                    }else if(choix == 'n' || choix == 'N'){
+                        printf("Modification annulee\n");
+                        enCours = 12;
+                        break;
+                    }
+                 }
+             }
+             //break;
+        }else if(ret == 0){
+            enCours = 10;
+            break;
+        }
+     }
+
  }

@@ -21,17 +21,22 @@
      while(1){
          IHM_menu__startApp();
          choixMenu = IHM_menu__choixMenu();
-         printf("%d",choixMenu);
+         printf("%c",choixMenu);
          switch(choixMenu){
             case '1' :
+                IHM_menu__entete();
                 IHM_afficheEleve__afficherTousEleves();
                 system("pause");
                 break;
-            case 75 :
+            case '2' :
+                IHM_menu__entete();
                 IHM_afficheEleve__ajouterEleve();
                 system("pause");
                 break;
             case '3' :
+                IHM_menu__entete();
+                IHM_afficherEleve__supprimerEleve();
+                system("pause");
                 break;
             case '4' :
                 break;

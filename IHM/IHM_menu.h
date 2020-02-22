@@ -13,6 +13,7 @@
     void IHM_menu__affichageMenuPrincipal();
     void IHM_menu__startApp();
     char IHM_menu__choixMenu();
+    void IHM_menu__entete();
 
  #endif // IHM_MENU_H_
 

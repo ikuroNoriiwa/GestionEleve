@@ -58,3 +58,8 @@ void IHM_menu__startApp(){
     IHM_menu__affichageTitre();
     IHM_menu__affichageMenuPrincipal();
 }
+
+void IHM_menu__entete(){
+    clrscr();
+    IHM_menu__affichageTitre();
+    }

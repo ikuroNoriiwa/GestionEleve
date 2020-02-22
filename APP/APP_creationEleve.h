@@ -12,6 +12,8 @@
    void saveEleves(Eleve* eleve);
    Eleve** APP_creationEleve__getAllEleves();
    int APP_creationEleve__getNbEleve();
+   void APP_creationEleve__supprimerEleve(int idEleve);
+   Eleve* APP_creationEleve__getOneEleve(int idEleve);
 
  #endif // APP_creationEleve_H_
 

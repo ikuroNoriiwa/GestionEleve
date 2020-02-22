@@ -25,7 +25,7 @@ Eleve* createEleve(char* nom, char* prenom, char *promotion, int id ){
 }
 
 void saveEleves(Eleve* eleve){
-
+    DATA_save__saveEleve(eleve);
 }
 
 Eleve** APP_creationEleve__getAllEleves(){
@@ -35,3 +35,11 @@ Eleve** APP_creationEleve__getAllEleves(){
     return DATA_save__retNbValTable_eleve();
  }
 
+void APP_creationEleve__supprimerEleve(int idEleve){
+    DATA_save__supprimerEleve(idEleve);
+}
+
+Eleve* APP_creationEleve__getOneEleve(int idEleve){
+    Eleve* tmpEleve = DATA_save__getOneEleve(idEleve);
+    return tmpEleve;
+}
