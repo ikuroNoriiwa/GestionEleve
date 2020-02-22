@@ -9,8 +9,8 @@
  #define DEFSTRUCT_H_
 
     typedef struct{
-        float note;
-        float coeff;
+        double note;
+        double coeff;
         int idEleve;
     }Notes;
 

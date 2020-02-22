@@ -9,7 +9,7 @@
  #include <stdlib.h>
  #include "../defStruct.h"
 
-Notes* createNote(float note, float coeff, int idEleve){
+Notes* createNote(double note, double coeff, int idEleve){
     printf("Note : %d   \n",idEleve);
     Notes* newNotes = (Notes*)malloc(sizeof(Notes));
     newNotes->coeff = coeff;
