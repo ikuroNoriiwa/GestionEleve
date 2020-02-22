@@ -15,7 +15,7 @@
  int main(void){
 
      printf(" void");
-        initDB();
+        DATA_save__initDB();
      Eleve* newEleve = createEleve("JEAN","Petit","3SI2");
      Eleve* newEleve2 = createEleve("NOYELLE","Mathieu","3SI2");
      //saveEleve(newEleve2);
@@ -30,19 +30,19 @@
     //saveNote(newNote3);
     //saveNote(newNote4);
 
-    Eleve** tabEleves = getEleve();
-    Notes** tabNotes = getNotes(1);
+    Eleve** tabEleves = DATA_save__getEleve();
+    Notes** tabNotes = DATA_save__getNotes(1);
 
 
     int i= 0;
     //saveEleve(newEleve);
     //newEleve = getEleve();
 
-    for(i = 0 ; i < retNbValTable_eleve() ; i++){
+    for(i = 0 ; i < DATA_save__retNbValTable_eleve() ; i++){
         printf("\n\n[ACCEUIL]nom : %s \n",tabEleves[i]->nom);
     }
 
-    for(i = 0; i < retNbValTable_note(1) ; i++){
+    for(i = 0; i < DATA_save__retNbValTable_note(1) ; i++){
         printf("Note %d eleve %s : %.2f\n",i,tabEleves[0]->nom,tabNotes[i]->note);
     }
     //printf("deuxieme fonction");
