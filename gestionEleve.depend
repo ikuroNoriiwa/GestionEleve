@@ -16,31 +16,39 @@
 
 1581858595 c:\users\mathieu\documents\dev\gestioneleve\gestioneleve\app\app_creationeleve.h
 
-1582363704 source:c:\users\mathieu\documents\github\gestioneleve\app\app_creationeleve.c
+1582393236 source:c:\users\mathieu\documents\github\gestioneleve\app\app_creationeleve.c
 	<stdlib.h>
 	<stdlib.h>
 	"../defStruct.h"
+	"../DATA/DATA_save.h"
 
 1582365333 c:\users\mathieu\documents\github\gestioneleve\defstruct.h
 
-1582363704 source:c:\users\mathieu\documents\github\gestioneleve\ihm\ihm_menu.c
+1582383554 source:c:\users\mathieu\documents\github\gestioneleve\ihm\ihm_menu.c
+	<stdlib.h>
+	<stdio.h>
+	"conio.h"
 
-1582366013 source:c:\users\mathieu\documents\github\gestioneleve\main.c
+1582395460 source:c:\users\mathieu\documents\github\gestioneleve\main.c
 	<stdio.h>
 	<stdlib.h>
 	"defStruct.h"
 	"APP/APP_creationEleve.h"
 	"APP/APP_creationNotes.h"
 	"DATA/DATA_save.h"
+	"UTIL/UTIL_tools.h"
+	"IHM/IHM_menu.h"
+	"IHM/IHM_afficheEleve.h"
 
-1582363704 c:\users\mathieu\documents\github\gestioneleve\app\app_creationeleve.h
+1582393438 c:\users\mathieu\documents\github\gestioneleve\app\app_creationeleve.h
 
-1582366297 source:c:\users\mathieu\documents\github\gestioneleve\data\data_save.c
+1582393485 source:c:\users\mathieu\documents\github\gestioneleve\data\data_save.c
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
 	"../sqlite/sqlite3.h"
 	"../defStruct.h"
+	"../UTIL/UTIL_tools.h"
 	"../sqlite/sqlite3.h"
 
 1582363704 c:\users\mathieu\documents\github\gestioneleve\sqlite\sqlite3.h
@@ -105,7 +113,7 @@
 	<unicode/utf16.h>
 	<math.h>
 
-1582363704 c:\users\mathieu\documents\github\gestioneleve\data\data_save.h
+1582370337 c:\users\mathieu\documents\github\gestioneleve\data\data_save.h
 
 1582365325 source:c:\users\mathieu\documents\github\gestioneleve\app\app_creationnotes.c
 	<stdlib.h>
@@ -113,4 +121,34 @@
 	"../defStruct.h"
 
 1582365345 c:\users\mathieu\documents\github\gestioneleve\app\app_creationnotes.h
+
+1582371904 c:\users\mathieu\documents\github\gestioneleve\util\util_tools.h
+
+1582372123 source:c:\users\mathieu\documents\github\gestioneleve\util\util_tools.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+
+1582382558 c:\users\mathieu\documents\github\gestioneleve\ihm\ihm_menu.h
+
+1582383101 source:c:\users\mathieu\documents\github\gestioneleve\ihm\conio.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<string.h>
+	"conio.h"
+
+1582383084 c:\users\mathieu\documents\github\gestioneleve\ihm\conio.h
+	"conio.h"
+	<windows.h>
+
+1582394645 c:\users\mathieu\documents\github\gestioneleve\ihm\ihm_afficheeleve.h
+
+1582393025 source:c:\users\mathieu\documents\github\gestioneleve\ihm\ihm_afficheeleve.c
+	<stdlib.h>
+	<stdio.h>
+	"conio.h"
+	"../defStruct.h"
+	"../APP/APP_creationEleve.h"
 

@@ -17,5 +17,6 @@
     int DATA_save__retNbValTable_note(int id);
     Notes** DATA_save__getNotes(int idEleve);
     void DATA_save__saveNote(Notes* tmp);
+    void DATA_save__supprimerEleve(int idEleve);
 
  #endif // DATA_SAVE_H_

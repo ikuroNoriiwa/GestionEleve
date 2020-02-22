@@ -10,14 +10,14 @@
  #include <string.h>
  #include "../sqlite/sqlite3.h"
  #include "../defStruct.h"
+ #include "../UTIL/UTIL_tools.h"
+ //ne pas oublier d'inclure Sqlite
+ #include "../sqlite/sqlite3.h"
 
-//ne pas oublier d'inclure Sqlite
-
-#include "../sqlite/sqlite3.h"
 /**
  * Initialise la base de données, si la base n'est pas créée, appelle la
  * fonction DATA_save__createDatabase()
- *
+ * @author mathieu
  */
 void DATA_save__initDB(){
  //fonction au d'emarrage de l'appli
@@ -35,6 +35,7 @@ void DATA_save__initDB(){
 
 /**
  * Crée la Base de données, appelé uniquement depuis la fonction DATA_save__initDB()
+ * @author mathieu
  */
 int DATA_save__createDatabase(){
     sqlite3 *db;
@@ -72,11 +73,13 @@ int DATA_save__createDatabase(){
  *
  * @param tmp : Eleve* --> un élève déjà initialisé avec un id = 0
  * @return : 0x001 si problème d'ouverture de la base
+ * @author mathieu
  */
 void DATA_save__saveEleve(Eleve* tmp){
     sqlite3 *db;
     char* messageError = NULL;
     int codeRetour = 0;
+    char* tmpLower[200];
 
      if(codeRetour = sqlite3_open_v2("SaveEleveNotes.sql", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL ) != 0){
         printf("[ERROR] DATA_saveEleve()  : %s\n", sqlite3_errmsg(db));
@@ -88,7 +91,7 @@ void DATA_save__saveEleve(Eleve* tmp){
 
     //Insertion de l'eleve
     printf("[DATA_saveEleve] nom : %s , prenom : %s \n",tmp->nom,tmp->prenom);
-    char* query  = sqlite3_mprintf("INSERT INTO Eleve(Nom, Prenom, Promotion) VALUES('%q','%q','%q');",tmp->nom, tmp->prenom, tmp->promotion);
+    char* query  = sqlite3_mprintf("INSERT INTO Eleve(Nom, Prenom, Promotion) VALUES('%q','%q','%q');",strtolower(tmpLower,tmp->nom), strtolower(tmpLower,tmp->prenom), strtolower(tmpLower,tmp->promotion));
     codeRetour = sqlite3_exec(db,query, NULL, 0, &messageError );
     if((codeRetour != 0 )&& (messageError =! NULL)){
         sqlite3_free(messageError);
@@ -105,6 +108,7 @@ void DATA_save__saveEleve(Eleve* tmp){
  *
  * @return : 0x001 si problème d'ouverture de la base
  * ou un Eleve** correspondant à un tableau avec tous les élèves
+ * @author mathieu
  */
 Eleve** DATA_save__getEleve(){
     sqlite3 *db;
@@ -129,7 +133,7 @@ Eleve** DATA_save__getEleve(){
             codeRetour = sqlite3_step(requete);
             if(codeRetour == SQLITE_OK || codeRetour == SQLITE_ROW){
                // printf("Nom : %s et Prenom : %s et ID =  %d\n ",sqlite3_column_text(requete,1),sqlite3_column_text(requete,2),sqlite3_column_int(requete,0));
-                newEleve[i] = createEleve(sqlite3_column_text(requete,1),sqlite3_column_text(requete,2), sqlite3_column_text(requete,3));
+                newEleve[i] = createEleve(sqlite3_column_text(requete,1),sqlite3_column_text(requete,2), sqlite3_column_text(requete,3),sqlite3_column_int(requete,0));
                 i++;
             }
         }
@@ -144,6 +148,7 @@ Eleve** DATA_save__getEleve(){
  *
  * @return : 0x001 si problème d'ouverture de la base
  * ou un int correspondant au nombre d'élèves dans la base
+ * @author mathieu
  */
 int DATA_save__retNbValTable_eleve(){
     sqlite3 *db;
@@ -179,6 +184,7 @@ int DATA_save__retNbValTable_eleve(){
  * @param id : int correspondant à l'id de l'élève dont on souhaite avoir les notes
  * @return : 0x001 si problème d'ouverture de la base
  * ou un int correspondant au nombre de notes de l'élève dans la base
+ * @author mathieu
  */
 int DATA_save__retNbValTable_note(int id){
     sqlite3 *db;
@@ -213,6 +219,7 @@ int DATA_save__retNbValTable_note(int id){
  *
  * @return : 0x001 si problème d'ouverture de la base
  * ou un Notes** correspondant à un tableau avec toutes les notes d'un élève
+ * @author mathieu
  */
 Notes** DATA_save__getNotes(int idEleve){
     sqlite3 *db;
@@ -254,6 +261,7 @@ Notes** DATA_save__getNotes(int idEleve){
  *
  * @param tmp : Notes* --> une ntoe déjà initialisé avec l'id d'un élève
  * @return : 0x001 si problème d'ouverture de la base
+ * @author mathieu
  */
 void DATA_save__saveNote(Notes* tmp){
     sqlite3 *db;
@@ -280,6 +288,42 @@ void DATA_save__saveNote(Notes* tmp){
     }
 
     sqlite3_close(db);
+}
 
+/**
+ * Permet de supprimer un élève, et donc par conséquent les notes qui lui sont attribuées dans la base
+ * de données SaveEleveNotes.sql ouverte en LECTURE / ECRITURE
+ *
+ * @param idEleve : int --> id de l'élève à supprimer dans la base
+ * @return : 0x001 si problème d'ouverture de la base
+ * @author mathieu
+ */
+void DATA_save__supprimerEleve(int idEleve){
+    sqlite3 *db;
+    char* messageError = NULL;
+    int codeRetour = 0;
+    char* queryEleve = sqlite3_mprintf("DELETE FROM Eleve WHERE pk_ID = '%d';", idEleve);
+    char* queryNote = sqlite3_mprintf("DELETE FROM Note WHERE fk_IDEleve = '%d';", idEleve);
 
+    if(codeRetour = sqlite3_open_v2("SaveEleveNotes.sql", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL ) != 0){
+        printf("[ERROR] DATA_getNotes()  : %s\n", sqlite3_errmsg(db));
+        sqlite3_close(db);
+
+        return 0x001;
+        //[DATA_saveEleve]s
+    }
+
+    codeRetour = sqlite3_exec(db,queryNote, NULL, 0, &messageError );
+    if((codeRetour != 0 )&& (messageError =! NULL)){
+        sqlite3_free(messageError);
+        messageError = NULL;
+    }
+
+    codeRetour = sqlite3_exec(db,queryEleve, NULL, 0, &messageError );
+    if((codeRetour != 0 )&& (messageError =! NULL)){
+        sqlite3_free(messageError);
+        messageError = NULL;
+    }
+
+    sqlite3_close(db);
 }
