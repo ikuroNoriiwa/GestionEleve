@@ -12,12 +12,16 @@
  #include "../defStruct.h"
  #include "../APP/APP_creationEleve.h"
 
-
+/**
+ * Liste tous les élèves présents en base triés par ID
+ *
+ * @author mathieu
+ */
  void IHM_afficheEleve__afficherTousEleves(){
     Eleve** tabEleves = APP_creationEleve__getAllEleves() ;
     int longTab = APP_creationEleve__getNbEleve();
     int i = 0, j = 0;
-    printf("long tab = : %d",longTab );
+    //printf("long tab = : %d",longTab );
 
     printf("\n");
     printf("|    id    |     Nom    |    Prenom    |    Promo   |\n");
@@ -73,6 +77,11 @@
     }
  }
 
+ /**
+  * propose l'ajout d'un nouvel élève dans la base
+  *
+  * @author mathieu
+  */
  void IHM_afficheEleve__ajouterEleve(){
     char nom[80];
     char prenom[80];
@@ -104,7 +113,11 @@
           }
  }
 
-
+ /**
+  * propose la suppression d'un élève dans la base
+  *
+  * @author mathieu
+  */
  void IHM_afficherEleve__supprimerEleve(){
      char idSaissie[20];
      int ret  = 0;
@@ -146,6 +159,11 @@
      }
  }
 
+ /**
+  * propose la modification d'un élève dans la base
+  *
+  * @author mathieu
+  */
  void IHM_afficheEleve__modifierEleve(){
     char idSaissie[20];
     char modification[100];
@@ -207,7 +225,11 @@
 
  }
 
-
+ /**
+  * propose d'ajouter une note à un élève dans la base
+  *
+  * @author mathieu
+  */
  void IHM_afficheEleve__ajouterNoteEleve(){
      char idSaissie[20];
     char modification[100];
@@ -252,13 +274,15 @@
      }
  }
 
-
+ /**
+  * affiche le Détail d'un élève (Nom, prenom, promotion, notes , moyenne)
+  *
+  * @author mathieu
+  */
  void IHM_afficheEleve__detaillerEleve(){
     char idSaissie[20];
-    char modification[100];
      int ret  = 0;
      Eleve* tmp;
-     Notes* tmpNote;
      int enCours = -1;
      int nbNotes = 0;
      double moy = 0.0, sommeCoeff = 0.0;
