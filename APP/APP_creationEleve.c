@@ -36,6 +36,13 @@ Eleve* createEleve(char* nom, char* prenom, char *promotion, int id ){
     return newEleve;
 }
 
+/**
+ *  sauvegarde en base
+ *
+ * @param eleve: Struct Eleve* contenant toutes les infos d'Eleves
+ *
+ * @author mathieu
+ */
 void saveEleves(Eleve* eleve){
     DATA_save__saveEleve(eleve);
 }
