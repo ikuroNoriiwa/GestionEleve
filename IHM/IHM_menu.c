@@ -9,6 +9,11 @@
  #include <stdio.h>
  #include "conio.h"
 
+ /**
+  * Affiche le logo de l'appli
+  *
+  * @author mathieu
+  */
 void IHM_menu__affichageTitre(){
     printf(" __| |___________________________________________________________________________________| |__\n");
     printf("(__   ___________________________________________________________________________________   __)\n");
@@ -26,6 +31,11 @@ void IHM_menu__affichageTitre(){
 
 }
 
+/**
+  * affiche le menu
+  *
+  * @author mathieu
+  */
 void IHM_menu__affichageMenuPrincipal(){
     printf("\n");
     printf("\t\t+-------------------------+ \n");
@@ -42,8 +52,13 @@ void IHM_menu__affichageMenuPrincipal(){
 
 }
 
-
-
+/**
+  * getch()
+  * écoute des touches du clavier pour le choix du menu
+  *
+  * @return c : char  --> touche pressée
+  * @author mathieu
+  */
 char IHM_menu__choixMenu() {
     char c;
 
@@ -52,13 +67,22 @@ char IHM_menu__choixMenu() {
     return c;
 }
 
-
+/**
+  * efface l'écran et affiche le titre et le menu
+  *
+  * @author mathieu
+  */
 void IHM_menu__startApp(){
     clrscr();
     IHM_menu__affichageTitre();
     IHM_menu__affichageMenuPrincipal();
 }
 
+/**
+  * efface l'écran et affiche le titre
+  *
+  * @author mathieu
+  */
 void IHM_menu__entete(){
     clrscr();
     IHM_menu__affichageTitre();
