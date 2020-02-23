@@ -35,16 +35,38 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="APP/APP_creationEleve.h" />
+		<Unit filename="APP/APP_creationNotes.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="APP/APP_creationNotes.h" />
 		<Unit filename="DATA/DATA_save.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="DATA/DATA_save.h" />
+		<Unit filename="IHM/IHM_afficheEleve.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="IHM/IHM_afficheEleve.h" />
 		<Unit filename="IHM/IHM_menu.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="IHM/IHM_menu.h" />
+		<Unit filename="IHM/conio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="IHM/conio.h" />
+		<Unit filename="UTIL/UTIL_tools.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="UTIL/UTIL_tools.h" />
 		<Unit filename="defStruct.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="sqlite/sqlite3.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="sqlite/sqlite3.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

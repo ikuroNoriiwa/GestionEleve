@@ -247,7 +247,7 @@ Notes** DATA_save__getNotes(int idEleve){
             codeRetour = sqlite3_step(requete);
             if(codeRetour == SQLITE_OK || codeRetour == SQLITE_ROW){
                 printf("\n\nNom : %s et Prenom : %s et ID =  %d\n ",sqlite3_column_text(requete,1),sqlite3_column_text(requete,2),sqlite3_column_int(requete,0));
-                newNotes[i] = createNote(atof(sqlite3_column_text(requete,1)),atof(sqlite3_column_text(requete,2)), sqlite3_column_int(requete,0));
+                newNotes[i] = APP_creationNotes__createNote(atof(sqlite3_column_text(requete,1)),atof(sqlite3_column_text(requete,2)), sqlite3_column_int(requete,0));
                 printf("tmptest : %f et coeff : %f ", newNotes[i]->note, newNotes[i]->coeff);
                 i++;
             }
@@ -383,4 +383,27 @@ Eleve* DATA_save__getOneEleve(int idEleve){
     }
     sqlite3_close(db);
     return newEleve;
+}
+
+
+void DATA_save__modifierEleve(Eleve* tmpEleve){
+    sqlite3 *db;
+    char* messageError = NULL;
+    int codeRetour = 0;
+    char* query = sqlite3_mprintf("UPDATE Eleve SET Nom = '%q', Prenom = '%q', Promotion = '%q' WHERE pk_ID = %d",tmpEleve->nom,tmpEleve->prenom,tmpEleve->promotion,tmpEleve->id);
+
+    if(codeRetour = sqlite3_open_v2("SaveEleveNotes.sql", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL ) != 0){
+        printf("[ERROR] DATA_getNotes()  : %s\n", sqlite3_errmsg(db));
+        sqlite3_close(db);
+
+        return 0x001;
+        //[DATA_saveEleve]s
+    }
+
+    codeRetour = sqlite3_exec(db,query, NULL, 0, &messageError );
+    if((codeRetour != 0 )&& (messageError =! NULL)){
+        sqlite3_free(messageError);
+        messageError = NULL;
+    }
+    sqlite3_close(db);
 }

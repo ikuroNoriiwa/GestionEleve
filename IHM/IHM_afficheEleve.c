@@ -7,6 +7,7 @@
 
  #include <stdlib.h>
  #include <stdio.h>
+ #include <string.h>
  #include "conio.h"
  #include "../defStruct.h"
  #include "../APP/APP_creationEleve.h"
@@ -145,13 +146,14 @@
      }
  }
 
- void IHM_afficheEleve__modifierEleve(int idEleve){
-    har idSaissie[20];
+ void IHM_afficheEleve__modifierEleve(){
+    char idSaissie[20];
+    char modification[100];
      int ret  = 0;
      Eleve* tmp;
      int enCours = -1;
      char choix ;
-     int aModifier ;
+     char aModifier ;
 
      while(enCours == -1){
          printf("\nSaisir l\'ID de l\'eleve a modifier : ");
@@ -164,20 +166,83 @@
                printf("\nAucun eleve ne porte cet Identifiant\n");
              }else if(tmp != NULL){
                  while(1){
-                    printf("Etes-vous sur de vouloir modifier %s %s de la promotion %s ?\n",tmp->prenom, tmp->nom, tmp->promotion);
-                    printf("Attention, cette action est irreversible !! (Y ou N)\n ");
-                    choix = getch();
-                    if(choix == 'o' || choix == 'y' ||
-                        choix == 'O' || choix == 'Y'){
-                        //APP_creationEleve__supprimerEleve(ret);
-                        enCours = 9;
-                        break;
-                    }else if(choix == 'n' || choix == 'N'){
-                        printf("Modification annulee\n");
-                        enCours = 12;
+                    printf("\nQue voulez-vous modifier ?? \n");
+                    printf("-1- Nom\n");
+                    printf("-2- Prenom\n");
+                    printf("-3- Promotion\n");
+                    aModifier = getch();
+                    switch(aModifier){
+                        case '1':
+                            printf("Saisissez le nom : ");
+                            fgets(modification, 99, stdin);
+                            modification[strlen(modification)-1] = '\0';
+                            strcpy(tmp->nom, modification);
+                            break;
+                        case '2':
+                            printf("Saisissez le prenom : ");
+                            fgets(modification, 99, stdin);
+                            modification[strlen(modification)-1] = '\0';
+                            strcpy(tmp->prenom, modification);
+                            break;
+                        case '3':
+                            printf("Saisissez la promotion : ");
+                            fgets(modification, 99, stdin);
+                            modification[strlen(modification)-1] = '\0';
+                            strcpy(tmp->promotion, modification);
+                            break;
+                    }
+                    if(strlen(modification) > 0){
+                        APP_creationEleve__modifierEleve(tmp);
+                        enCours = 15;
                         break;
                     }
                  }
+             }
+             //break;
+        }else if(ret == 0){
+            enCours = 10;
+            break;
+        }
+     }
+
+ }
+
+
+ void IHM_afficheEleve__ajouterNoteEleve(){
+     char idSaissie[20];
+    char modification[100];
+     int ret  = 0;
+     Eleve* tmp;
+     Notes* tmpNote;
+     int enCours = -1;
+     double note = 0.0, coeff = 0.0;
+
+     while(enCours == -1){
+         printf("\nSaisissez l\'ID de l\'eleve pour y ajouter une note : ");
+         fgets(idSaissie, 19, stdin);
+         ret = atoi(idSaissie);
+         tmp = APP_creationEleve__getOneEleve(ret);
+        if(ret != 0 ){
+             if(tmp == NULL){
+               // printf("NULL ?? %s\n",tmp->nom);
+               printf("\nAucun eleve ne porte cet Identifiant\n");
+             }else if(tmp != NULL){
+                 strcpy(idSaissie,"");
+                 printf("Saisissez la note : ");
+                 fgets(idSaissie, 19, stdin);
+                 note = atof(idSaissie);
+
+                 strcpy(idSaissie,"");
+                 printf("\nSaisissez le coefficient : ");
+                 fgets(idSaissie,19, stdin);
+                 coeff = atof(idSaissie);
+
+                 if(coeff != 0.0 && note != 0.0){
+                    tmpNote = APP_creationNotes__createNote(note,coeff,tmp->id);
+                    APP_creationNotes__saveNote(tmpNote);
+                    enCours = 13;
+                 }
+
              }
              //break;
         }else if(ret == 0){

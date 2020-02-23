@@ -39,10 +39,15 @@
                 system("pause");
                 break;
             case '4' :
+                IHM_menu__entete();
+                IHM_afficheEleve__modifierEleve();
                 break;
             case '5' :
+                IHM_menu__entete();
+                IHM_afficheEleve__ajouterNoteEleve();
                 break;
             case '6' :
+                IHM_menu__entete();
                 break;
             case '0' :
                 exit(0);

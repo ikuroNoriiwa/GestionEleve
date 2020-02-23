@@ -8,7 +8,7 @@
  #ifndef APP_creationNotes_H_
  #define APP_creationNotes_H_
 
-    Notes* createNote(double note, double coeff, int idEleve);
+    Notes* APP_creationNotes__createNote(double note, double coeff, int idEleve);
 
  #endif // APP_creationNotes_H_
 

@@ -19,5 +19,6 @@
     void DATA_save__saveNote(Notes* tmp);
     void DATA_save__supprimerEleve(int idEleve);
     Eleve* DATA_save__getOneEleve(int idEleve);
+    void DATA_save__modifierEleve(Eleve* tmpEleve);
 
  #endif // DATA_SAVE_H_

@@ -7,6 +7,7 @@
 
  #include <stdlib.h>
  #include <stdlib.h>
+ #include <string.h>
  #include "../defStruct.h"
  #include "../DATA/DATA_save.h"
 
@@ -42,4 +43,9 @@ void APP_creationEleve__supprimerEleve(int idEleve){
 Eleve* APP_creationEleve__getOneEleve(int idEleve){
     Eleve* tmpEleve = DATA_save__getOneEleve(idEleve);
     return tmpEleve;
+}
+
+void APP_creationEleve__modifierEleve(Eleve* tmpEleve){
+    DATA_save__modifierEleve(tmpEleve);
+
 }

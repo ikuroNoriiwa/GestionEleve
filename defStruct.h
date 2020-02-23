@@ -19,7 +19,7 @@
         char* nom;
         char* prenom;
         char* promotion;
-        Notes* listesNotes;
+        Notes** listesNotes;
     }Eleve;
 
 

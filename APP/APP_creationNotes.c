@@ -9,7 +9,7 @@
  #include <stdlib.h>
  #include "../defStruct.h"
 
-Notes* createNote(double note, double coeff, int idEleve){
+Notes* APP_creationNotes__createNote(double note, double coeff, int idEleve){
     printf("Note : %d   \n",idEleve);
     Notes* newNotes = (Notes*)malloc(sizeof(Notes));
     newNotes->coeff = coeff;
@@ -17,4 +17,11 @@ Notes* createNote(double note, double coeff, int idEleve){
     newNotes->idEleve = idEleve;
 
     return newNotes;
+}
+
+
+void APP_creationNotes__saveNote(Notes* tmpNote){
+    printf("SAISIE %.2f et %.2f\n",tmpNote->note, tmpNote->coeff);
+    system("pause");
+    DATA_save__saveNote(tmpNote);
 }

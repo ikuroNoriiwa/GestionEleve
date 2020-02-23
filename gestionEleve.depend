@@ -16,20 +16,21 @@
 
 1581858595 c:\users\mathieu\documents\dev\gestioneleve\gestioneleve\app\app_creationeleve.h
 
-1582403265 source:c:\users\mathieu\documents\github\gestioneleve\app\app_creationeleve.c
+1582462297 source:c:\users\mathieu\documents\github\gestioneleve\app\app_creationeleve.c
 	<stdlib.h>
 	<stdlib.h>
+	<string.h>
 	"../defStruct.h"
 	"../DATA/DATA_save.h"
 
-1582365333 c:\users\mathieu\documents\github\gestioneleve\defstruct.h
+1582462451 c:\users\mathieu\documents\github\gestioneleve\defstruct.h
 
 1582396576 source:c:\users\mathieu\documents\github\gestioneleve\ihm\ihm_menu.c
 	<stdlib.h>
 	<stdio.h>
 	"conio.h"
 
-1582403445 source:c:\users\mathieu\documents\github\gestioneleve\main.c
+1582464501 source:c:\users\mathieu\documents\github\gestioneleve\main.c
 	<stdio.h>
 	<stdlib.h>
 	"defStruct.h"
@@ -42,7 +43,7 @@
 
 1582401226 c:\users\mathieu\documents\github\gestioneleve\app\app_creationeleve.h
 
-1582406942 source:c:\users\mathieu\documents\github\gestioneleve\data\data_save.c
+1582464859 source:c:\users\mathieu\documents\github\gestioneleve\data\data_save.c
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
@@ -113,14 +114,14 @@
 	<unicode/utf16.h>
 	<math.h>
 
-1582401841 c:\users\mathieu\documents\github\gestioneleve\data\data_save.h
+1582461946 c:\users\mathieu\documents\github\gestioneleve\data\data_save.h
 
-1582365325 source:c:\users\mathieu\documents\github\gestioneleve\app\app_creationnotes.c
+1582465017 source:c:\users\mathieu\documents\github\gestioneleve\app\app_creationnotes.c
 	<stdlib.h>
 	<stdlib.h>
 	"../defStruct.h"
 
-1582365345 c:\users\mathieu\documents\github\gestioneleve\app\app_creationnotes.h
+1582464720 c:\users\mathieu\documents\github\gestioneleve\app\app_creationnotes.h
 
 1582371904 c:\users\mathieu\documents\github\gestioneleve\util\util_tools.h
 
@@ -145,9 +146,10 @@
 
 1582394645 c:\users\mathieu\documents\github\gestioneleve\ihm\ihm_afficheeleve.h
 
-1582407915 source:c:\users\mathieu\documents\github\gestioneleve\ihm\ihm_afficheeleve.c
+1582464999 source:c:\users\mathieu\documents\github\gestioneleve\ihm\ihm_afficheeleve.c
 	<stdlib.h>
 	<stdio.h>
+	<string.h>
 	"conio.h"
 	"../defStruct.h"
 	"../APP/APP_creationEleve.h"
