@@ -110,6 +110,8 @@ void IHM_afficheEleve__afficherTousEleves(){
                 tmp = createEleve(nom,prenom,promotion,0);
                 saveEleves(tmp);
                 break;
+            }else if(choix == 'n' || choix == 'N' ){
+                break;
             }
           }
  }
@@ -288,7 +290,7 @@ void IHM_afficheEleve__afficherTousEleves(){
      int i = 0;
 
      while(enCours == -1){
-         printf("\nSaisissez l\'ID de l\'eleve pour y ajouter une note : ");
+         printf("\nSaisissez l\'ID de l\'eleve pour afficher le detail : ");
          fgets(idSaissie, 19, stdin);
          ret = atoi(idSaissie);
          tmp = APP_creationEleve__getOneElevePlusNotes(ret);

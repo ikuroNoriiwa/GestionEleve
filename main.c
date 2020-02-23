@@ -17,6 +17,7 @@
 
  int main(void){
      system("mode con lines=55 cols=96");
+     DATA_save__initDB();
      char choixMenu ;
      while(1){
          IHM_menu__startApp();
