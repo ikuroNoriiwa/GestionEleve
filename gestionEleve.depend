@@ -16,7 +16,7 @@
 
 1581858595 c:\users\mathieu\documents\dev\gestioneleve\gestioneleve\app\app_creationeleve.h
 
-1582468223 source:c:\users\mathieu\documents\github\gestioneleve\app\app_creationeleve.c
+1582470837 source:c:\users\mathieu\documents\github\gestioneleve\app\app_creationeleve.c
 	<stdlib.h>
 	<stdlib.h>
 	<string.h>
@@ -25,7 +25,7 @@
 
 1582462451 c:\users\mathieu\documents\github\gestioneleve\defstruct.h
 
-1582396576 source:c:\users\mathieu\documents\github\gestioneleve\ihm\ihm_menu.c
+1582469842 source:c:\users\mathieu\documents\github\gestioneleve\ihm\ihm_menu.c
 	<stdlib.h>
 	<stdio.h>
 	"conio.h"
@@ -41,9 +41,9 @@
 	"IHM/IHM_menu.h"
 	"IHM/IHM_afficheEleve.h"
 
-1582468244 c:\users\mathieu\documents\github\gestioneleve\app\app_creationeleve.h
+1582476426 c:\users\mathieu\documents\github\gestioneleve\app\app_creationeleve.h
 
-1582468640 source:c:\users\mathieu\documents\github\gestioneleve\data\data_save.c
+1582469979 source:c:\users\mathieu\documents\github\gestioneleve\data\data_save.c
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
@@ -116,12 +116,12 @@
 
 1582461946 c:\users\mathieu\documents\github\gestioneleve\data\data_save.h
 
-1582468787 source:c:\users\mathieu\documents\github\gestioneleve\app\app_creationnotes.c
+1582470924 source:c:\users\mathieu\documents\github\gestioneleve\app\app_creationnotes.c
 	<stdlib.h>
 	<stdlib.h>
 	"../defStruct.h"
 
-1582464720 c:\users\mathieu\documents\github\gestioneleve\app\app_creationnotes.h
+1582470614 c:\users\mathieu\documents\github\gestioneleve\app\app_creationnotes.h
 
 1582371904 c:\users\mathieu\documents\github\gestioneleve\util\util_tools.h
 
@@ -146,11 +146,12 @@
 
 1582469320 c:\users\mathieu\documents\github\gestioneleve\ihm\ihm_afficheeleve.h
 
-1582469314 source:c:\users\mathieu\documents\github\gestioneleve\ihm\ihm_afficheeleve.c
+1582476473 source:c:\users\mathieu\documents\github\gestioneleve\ihm\ihm_afficheeleve.c
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
 	"conio.h"
 	"../defStruct.h"
 	"../APP/APP_creationEleve.h"
+	"../APP/APP_creationNotes.h"
 

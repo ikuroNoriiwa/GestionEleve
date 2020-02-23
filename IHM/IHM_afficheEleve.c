@@ -11,13 +11,14 @@
  #include "conio.h"
  #include "../defStruct.h"
  #include "../APP/APP_creationEleve.h"
+ #include "../APP/APP_creationNotes.h"
 
 /**
  * Liste tous les élèves présents en base triés par ID
  *
  * @author mathieu
  */
- void IHM_afficheEleve__afficherTousEleves(){
+void IHM_afficheEleve__afficherTousEleves(){
     Eleve** tabEleves = APP_creationEleve__getAllEleves() ;
     int longTab = APP_creationEleve__getNbEleve();
     int i = 0, j = 0;
@@ -170,7 +171,6 @@
      int ret  = 0;
      Eleve* tmp;
      int enCours = -1;
-     char choix ;
      char aModifier ;
 
      while(enCours == -1){
@@ -232,7 +232,6 @@
   */
  void IHM_afficheEleve__ajouterNoteEleve(){
      char idSaissie[20];
-    char modification[100];
      int ret  = 0;
      Eleve* tmp;
      Notes* tmpNote;
