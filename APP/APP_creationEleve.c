@@ -49,3 +49,9 @@ void APP_creationEleve__modifierEleve(Eleve* tmpEleve){
     DATA_save__modifierEleve(tmpEleve);
 
 }
+
+Eleve* APP_creationEleve__getOneElevePlusNotes(int idEleve){
+    Eleve* tmpEleve = DATA_save__getOneEleve(idEleve);
+    tmpEleve->listesNotes = DATA_save__getNotes(idEleve);
+    return tmpEleve;
+}

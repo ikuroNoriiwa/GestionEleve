@@ -48,6 +48,8 @@
                 break;
             case '6' :
                 IHM_menu__entete();
+                IHM_afficheEleve__detaillerEleve();
+                system("pause");
                 break;
             case '0' :
                 exit(0);

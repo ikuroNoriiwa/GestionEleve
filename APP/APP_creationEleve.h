@@ -14,6 +14,7 @@
    int APP_creationEleve__getNbEleve();
    void APP_creationEleve__supprimerEleve(int idEleve);
    Eleve* APP_creationEleve__getOneEleve(int idEleve);
+   Eleve* APP_creationEleve__getOneElevePlusNotes(int idEleve);
 
  #endif // APP_creationEleve_H_
 

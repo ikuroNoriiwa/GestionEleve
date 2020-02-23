@@ -250,5 +250,54 @@
             break;
         }
      }
+ }
 
+
+ void IHM_afficheEleve__detaillerEleve(){
+    char idSaissie[20];
+    char modification[100];
+     int ret  = 0;
+     Eleve* tmp;
+     Notes* tmpNote;
+     int enCours = -1;
+     int nbNotes = 0;
+     double moy = 0.0, sommeCoeff = 0.0;
+     int i = 0;
+
+     while(enCours == -1){
+         printf("\nSaisissez l\'ID de l\'eleve pour y ajouter une note : ");
+         fgets(idSaissie, 19, stdin);
+         ret = atoi(idSaissie);
+         tmp = APP_creationEleve__getOneElevePlusNotes(ret);
+        if(ret != 0 ){
+             if(tmp == NULL){
+               // printf("NULL ?? %s\n",tmp->nom);
+               printf("\nAucun eleve ne porte cet Identifiant\n");
+             }else if(tmp != NULL){
+                 nbNotes = App_creationNotes__getNombreNote(ret);
+                 if(nbNotes > 0){
+                    printf("\n Informations eleve : \n");
+                    printf("\n - %s %s promotion : %s \n",tmp->prenom, tmp->nom, tmp->promotion);
+                    printf("\n Notes : \n");
+
+
+                    for(i = 0 ; i < nbNotes ; i++){
+                        printf(" Note %d : %.2f | coefficient : %.2f\n",(i+1) , tmp->listesNotes[i]->note, tmp->listesNotes[i]->coeff);
+                        moy += (tmp->listesNotes[i]->note * tmp->listesNotes[i]->coeff);
+                        sommeCoeff += (tmp->listesNotes[i]->coeff);
+                    }
+                    printf("\t ----- \n");
+                    printf("Moyenne = %.2f\n",(moy/sommeCoeff));
+                    enCours = 21;
+                 }else{
+                    printf("Pas de notes pour %s %s \n", tmp->prenom, tmp->nom);
+                    //enCours = 17;
+                 }
+                 //break;
+             }
+        }else if(ret == 0){
+            enCours = 10;
+            break;
+        }
+    }
  }

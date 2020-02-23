@@ -92,7 +92,7 @@ void DATA_save__saveEleve(Eleve* tmp){
     }
 
     //Insertion de l'eleve
-    printf("[DATA_saveEleve] nom : %s , prenom : %s \n",tmp->nom,tmp->prenom);
+    //printf("[DATA_saveEleve] nom : %s , prenom : %s \n",tmp->nom,tmp->prenom);
     char* query  = sqlite3_mprintf("INSERT INTO Eleve(Nom, Prenom, Promotion) VALUES('%q','%q','%q');",strtolower(tmpLower,tmp->nom), strtolower(tmpLower2,tmp->prenom), strtolower(tmpLower3,tmp->promotion));
     codeRetour = sqlite3_exec(db,query, NULL, 0, &messageError );
     if((codeRetour != 0 )&& (messageError =! NULL)){
@@ -228,11 +228,9 @@ Notes** DATA_save__getNotes(int idEleve){
     char* messageError = NULL;
     int codeRetour = 0;
     sqlite3_stmt *requete;
-    printf("getNotessss");
     char* query = sqlite3_mprintf("SELECT * FROM Note WHERE fk_IDEleve = '%d';", idEleve);
     Notes** newNotes;
 
-    printf("[DATA] GETNOTE");
      if(codeRetour = sqlite3_open_v2("SaveEleveNotes.sql", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL ) != 0){
         printf("[ERROR] DATA_getNotes()  : %s\n", sqlite3_errmsg(db));
         sqlite3_close(db);
@@ -246,9 +244,7 @@ Notes** DATA_save__getNotes(int idEleve){
         while(codeRetour == SQLITE_OK || codeRetour == SQLITE_ROW){
             codeRetour = sqlite3_step(requete);
             if(codeRetour == SQLITE_OK || codeRetour == SQLITE_ROW){
-                printf("\n\nNom : %s et Prenom : %s et ID =  %d\n ",sqlite3_column_text(requete,1),sqlite3_column_text(requete,2),sqlite3_column_int(requete,0));
                 newNotes[i] = APP_creationNotes__createNote(atof(sqlite3_column_text(requete,1)),atof(sqlite3_column_text(requete,2)), sqlite3_column_int(requete,0));
-                printf("tmptest : %f et coeff : %f ", newNotes[i]->note, newNotes[i]->coeff);
                 i++;
             }
         }
@@ -279,7 +275,7 @@ void DATA_save__saveNote(Notes* tmp){
     }
 
     //Insertion de l'eleve
-    printf("[DATA_saveNote] Note : %f , coeff : %f \n",tmp->note,tmp->coeff);
+    //printf("[DATA_saveNote] Note : %f , coeff : %f \n",tmp->note,tmp->coeff);
 
     char* query  = sqlite3_mprintf("INSERT INTO Note(fk_IDEleve, Note, Coeff) VALUES('%d','%.2f','%.2f');",tmp->idEleve, tmp->note, tmp->coeff);
     codeRetour = sqlite3_exec(db,query, NULL, 0, &messageError );
@@ -407,3 +403,5 @@ void DATA_save__modifierEleve(Eleve* tmpEleve){
     }
     sqlite3_close(db);
 }
+
+
