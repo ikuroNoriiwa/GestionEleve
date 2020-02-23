@@ -381,7 +381,13 @@ Eleve* DATA_save__getOneEleve(int idEleve){
     return newEleve;
 }
 
-
+/**
+ * Modifie Un élèves présents dans la base SaveEleveNotes.sql
+ *
+ * @param tmpEleve : Eleve* élève a modifier
+ * @return : 0x001 si problème d'ouverture de la base
+ * @author mathieu
+ */
 void DATA_save__modifierEleve(Eleve* tmpEleve){
     sqlite3 *db;
     char* messageError = NULL;
