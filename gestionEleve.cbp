@@ -43,22 +43,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="DATA/DATA_save.h" />
-		<Unit filename="IHM/IHM_afficheEleve.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="IHM/IHM_afficheEleve.h" />
 		<Unit filename="IHM/IHM_menu.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="IHM/IHM_menu.h" />
-		<Unit filename="IHM/conio.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="IHM/conio.h" />
-		<Unit filename="UTIL/UTIL_tools.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="UTIL/UTIL_tools.h" />
 		<Unit filename="defStruct.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
