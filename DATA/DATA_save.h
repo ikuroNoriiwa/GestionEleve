@@ -20,5 +20,7 @@
     void DATA_save__supprimerEleve(int idEleve);
     Eleve* DATA_save__getOneEleve(int idEleve);
     void DATA_save__modifierEleve(Eleve* tmpEleve);
+    Eleve** DATA_save__getEleve_OderByNAME();
+    Eleve** DATA_save__getEleve_OderByPRENOM();
 
  #endif // DATA_SAVE_H_

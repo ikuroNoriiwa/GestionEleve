@@ -26,7 +26,8 @@
          switch(choixMenu){
             case '1' :
                 IHM_menu__entete();
-                IHM_afficheEleve__afficherTousEleves();
+                IHM_afficheEleve__MenuListerEleves();
+                //IHM_afficheEleve__afficherTousEleves();
                 system("pause");
                 break;
             case '2' :

@@ -18,8 +18,19 @@
  *
  * @author mathieu
  */
-void IHM_afficheEleve__afficherTousEleves(){
-    Eleve** tabEleves = APP_creationEleve__getAllEleves() ;
+void IHM_afficheEleve__afficherTousEleves(int affich){
+    Eleve** tabEleves;
+    switch(affich){
+        case 1:
+            tabEleves = APP_creationEleve__getAllElevesNOM() ;
+            break;
+        case 2 :
+            tabEleves = APP_creationEleve__getAllElevesPRENOM() ;
+            break;
+        case 3:
+            tabEleves = APP_creationEleve__getAllElevesPROMOTION() ;
+            break;
+    }
     int longTab = APP_creationEleve__getNbEleve();
     int i = 0, j = 0;
     //printf("long tab = : %d",longTab );
@@ -78,6 +89,32 @@ void IHM_afficheEleve__afficherTousEleves(){
     }
  }
 
+void IHM_afficheEleve__MenuListerEleves(){
+    char choix ;
+    int enCours = -1;
+     while(enCours == -1){
+        printf("\ncomment voulez vous lister les eleves : \n");
+        printf("\t-1- Nom\n");
+        printf("\t-1- prenom\n");
+        printf("\t-1- promotion\n");
+        choix = getch();
+        switch(choix){
+            case '1':
+                IHM_afficheEleve__afficherTousEleves(1);
+                enCours = 1;
+                break;
+            case '2':
+                IHM_afficheEleve__afficherTousEleves(2);
+                enCours = 2;
+                break;
+            case '3':
+                IHM_afficheEleve__afficherTousEleves(3);
+                enCours = 3;
+                break;
+                        }
+
+    }
+}
  /**
   * propose l'ajout d'un nouvel élève dans la base
   *

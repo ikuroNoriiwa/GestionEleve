@@ -117,7 +117,7 @@ Eleve** DATA_save__getEleve(){
     char* messageError = NULL;
     int codeRetour = 0;
     sqlite3_stmt *requete;
-    char* query = "SELECT * FROM Eleve;";
+    char* query = "SELECT * FROM Eleve;"; //  ORDER BY nom ASC
     Eleve** newEleve;
 
 
@@ -410,4 +410,123 @@ void DATA_save__modifierEleve(Eleve* tmpEleve){
     sqlite3_close(db);
 }
 
+/**
+ * Récupère tous les élèves présents dans la base SaveEleveNotes.sql
+ *
+ * @return : 0x001 si problème d'ouverture de la base
+ * ou un Eleve** correspondant à un tableau avec tous les élèves
+ * @author mathieu
+ */
+Eleve** DATA_save__getEleve_OderByNAME(){
+    sqlite3 *db;
+    char* messageError = NULL;
+    int codeRetour = 0;
+    sqlite3_stmt *requete;
+    char* query = "SELECT * FROM Eleve ORDER BY nom ASC;"; //  ORDER BY nom ASC
+    Eleve** newEleve;
+
+
+     if(codeRetour = sqlite3_open_v2("SaveEleveNotes.sql", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL ) != 0){
+        printf("[ERROR] DATA_getEleve()  : %s\n", sqlite3_errmsg(db));
+        sqlite3_close(db);
+
+        return 0x001;
+        //[DATA_saveEleve]s
+    }
+    if(!(codeRetour = sqlite3_prepare_v2(db, query, strlen(query), &requete, NULL))){
+        newEleve = (Eleve*)malloc(sizeof(Eleve)*DATA_save__retNbValTable_eleve());
+        int i = 0;
+        while(codeRetour == SQLITE_OK || codeRetour == SQLITE_ROW){
+            codeRetour = sqlite3_step(requete);
+            if(codeRetour == SQLITE_OK || codeRetour == SQLITE_ROW){
+               // printf("Nom : %s et Prenom : %s et ID =  %d\n ",sqlite3_column_text(requete,1),sqlite3_column_text(requete,2),sqlite3_column_int(requete,0));
+                newEleve[i] = createEleve(sqlite3_column_text(requete,1),sqlite3_column_text(requete,2), sqlite3_column_text(requete,3),sqlite3_column_int(requete,0));
+                i++;
+            }
+        }
+        sqlite3_finalize(requete);
+    }
+    sqlite3_close(db);
+    return newEleve;
+}
+
+/**
+ * Récupère tous les élèves présents dans la base SaveEleveNotes.sql
+ *
+ * @return : 0x001 si problème d'ouverture de la base
+ * ou un Eleve** correspondant à un tableau avec tous les élèves
+ * @author mathieu
+ */
+Eleve** DATA_save__getEleve_OderByPRENOM(){
+    sqlite3 *db;
+    char* messageError = NULL;
+    int codeRetour = 0;
+    sqlite3_stmt *requete;
+    char* query = "SELECT * FROM Eleve ORDER BY prenom ASC;"; //  ORDER BY nom ASC
+    Eleve** newEleve;
+
+
+     if(codeRetour = sqlite3_open_v2("SaveEleveNotes.sql", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL ) != 0){
+        printf("[ERROR] DATA_getEleve()  : %s\n", sqlite3_errmsg(db));
+        sqlite3_close(db);
+
+        return 0x001;
+        //[DATA_saveEleve]s
+    }
+    if(!(codeRetour = sqlite3_prepare_v2(db, query, strlen(query), &requete, NULL))){
+        newEleve = (Eleve*)malloc(sizeof(Eleve)*DATA_save__retNbValTable_eleve());
+        int i = 0;
+        while(codeRetour == SQLITE_OK || codeRetour == SQLITE_ROW){
+            codeRetour = sqlite3_step(requete);
+            if(codeRetour == SQLITE_OK || codeRetour == SQLITE_ROW){
+               // printf("Nom : %s et Prenom : %s et ID =  %d\n ",sqlite3_column_text(requete,1),sqlite3_column_text(requete,2),sqlite3_column_int(requete,0));
+                newEleve[i] = createEleve(sqlite3_column_text(requete,1),sqlite3_column_text(requete,2), sqlite3_column_text(requete,3),sqlite3_column_int(requete,0));
+                i++;
+            }
+        }
+        sqlite3_finalize(requete);
+    }
+    sqlite3_close(db);
+    return newEleve;
+}
+
+/**
+ * Récupère tous les élèves présents dans la base SaveEleveNotes.sql
+ *
+ * @return : 0x001 si problème d'ouverture de la base
+ * ou un Eleve** correspondant à un tableau avec tous les élèves
+ * @author mathieu
+ */
+Eleve** DATA_save__getEleve_OderByPROMOTION(){
+    sqlite3 *db;
+    char* messageError = NULL;
+    int codeRetour = 0;
+    sqlite3_stmt *requete;
+    char* query = "SELECT * FROM Eleve ORDER BY promotion ASC;"; //  ORDER BY nom ASC
+    Eleve** newEleve;
+
+
+     if(codeRetour = sqlite3_open_v2("SaveEleveNotes.sql", &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL ) != 0){
+        printf("[ERROR] DATA_getEleve()  : %s\n", sqlite3_errmsg(db));
+        sqlite3_close(db);
+
+        return 0x001;
+        //[DATA_saveEleve]s
+    }
+    if(!(codeRetour = sqlite3_prepare_v2(db, query, strlen(query), &requete, NULL))){
+        newEleve = (Eleve*)malloc(sizeof(Eleve)*DATA_save__retNbValTable_eleve());
+        int i = 0;
+        while(codeRetour == SQLITE_OK || codeRetour == SQLITE_ROW){
+            codeRetour = sqlite3_step(requete);
+            if(codeRetour == SQLITE_OK || codeRetour == SQLITE_ROW){
+               // printf("Nom : %s et Prenom : %s et ID =  %d\n ",sqlite3_column_text(requete,1),sqlite3_column_text(requete,2),sqlite3_column_int(requete,0));
+                newEleve[i] = createEleve(sqlite3_column_text(requete,1),sqlite3_column_text(requete,2), sqlite3_column_text(requete,3),sqlite3_column_int(requete,0));
+                i++;
+            }
+        }
+        sqlite3_finalize(requete);
+    }
+    sqlite3_close(db);
+    return newEleve;
+}
 

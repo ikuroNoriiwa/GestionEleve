@@ -7,7 +7,7 @@
 #ifndef IHM_AFFICHEELEVE_H_
  #define IHM_AFFICHEELEVE_H_
 
-    void IHM_afficheEleve__afficherTousEleves();
+    void IHM_afficheEleve__afficherTousEleves(int affich);
     void IHM_afficheEleve__ajouterEleve();
     void IHM_afficherEleve__supprimerEleve();
     void IHM_afficheEleve__modifierEleve();

@@ -119,3 +119,39 @@ Eleve* APP_creationEleve__getOneElevePlusNotes(int idEleve){
     tmpEleve->listesNotes = DATA_save__getNotes(idEleve);
     return tmpEleve;
 }
+
+/**
+ *  renvoie un tableau struct Eleve
+ *
+ * @return newEleve: Struct Eleve** contenant tous les Eleves en base
+ *
+ * @author mathieu
+ */
+Eleve** APP_creationEleve__getAllElevesNOM(){
+
+    return DATA_save__getEleve_OderByNAME();
+}
+
+/**
+ *  renvoie un tableau struct Eleve
+ *
+ * @return newEleve: Struct Eleve** contenant tous les Eleves en base
+ *
+ * @author mathieu
+ */
+Eleve** APP_creationEleve__getAllElevesPRENOM(){
+
+    return DATA_save__getEleve_OderByPRENOM();
+}
+
+/**
+ *  renvoie un tableau struct Eleve
+ *
+ * @return newEleve: Struct Eleve** contenant tous les Eleves en base
+ *
+ * @author mathieu
+ */
+Eleve** APP_creationEleve__getAllElevesPROMOTION(){
+
+    return DATA_save__getEleve_OderByPROMOTION();
+}
