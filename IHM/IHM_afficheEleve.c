@@ -39,6 +39,7 @@ void IHM_afficheEleve__afficherTousEleves(int affich){
 
     printf("\n");
     printf("|    id    |     Nom    |    Prenom    |    Promo   |\n");
+    printf("+----------+------------+--------------+------------+\n");
     for(i = 0; i < longTab; i++){
 
         printf("|   %4d   |",tabEleves[i]->id);
@@ -61,7 +62,10 @@ void IHM_afficheEleve__afficherTousEleves(int affich){
         for(j = 0 ; j < (7 - strlen(tabEleves[i]->prenom)/2) ; j++){
             printf(" ");
         }
-        printf("%s",tabEleves[i]->prenom);
+        printf("%c",toupper(tabEleves[i]->prenom[0]));
+        for(j = 1; j < strlen(tabEleves[i]->prenom); j++){
+             printf("%c",tabEleves[i]->prenom[j]);
+        }
         if(strlen(tabEleves[i]->prenom)%2 == 0 ){
             for(j = 0 ; j < (7 - strlen(tabEleves[i]->prenom)/2) ; j++){
                 printf(" ");
@@ -99,8 +103,8 @@ void IHM_afficheEleve__MenuListerEleves(){
      while(enCours == -1){
         printf("\ncomment voulez vous lister les eleves : \n");
         printf("\t-1- Nom\n");
-        printf("\t-1- prenom\n");
-        printf("\t-1- promotion\n");
+        printf("\t-2- prenom\n");
+        printf("\t-3- promotion\n");
         choix = getch();
         switch(choix){
             case '1':
