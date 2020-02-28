@@ -9,6 +9,7 @@
  #define UTIL_TOOLS_H_
 
  char * strtolower( char * dest, const char * src );
+ char * strtoupper (char * dest, const char * src );
 
  #endif // UTIL_TOOLS_H_
 

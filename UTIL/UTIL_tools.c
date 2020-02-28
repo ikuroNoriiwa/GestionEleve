@@ -23,3 +23,18 @@
     while( *dest++ = tolower(*src++));
     return result;
 }
+
+/**
+ * Met en majuscule une chaine de caractères sans modifier la source
+ *
+ * @param dest : char*
+ * @param src : char* chaine à convertir
+ * @return : result --> le résultat de la conversion
+ * @author mathieu
+ */
+ char * strtoupper (char * dest, const char * src ) {
+    char* result = dest;
+    while( *dest++ = toupper(*src++));
+    return result;
+}
+

@@ -12,7 +12,7 @@
  #include "../defStruct.h"
  #include "../APP/APP_creationEleve.h"
  #include "../APP/APP_creationNotes.h"
-
+ #include "../UTIL/UTIL_tools.h"
 /**
  * Liste tous les élèves présents en base triés par ID
  *
@@ -20,6 +20,8 @@
  */
 void IHM_afficheEleve__afficherTousEleves(int affich){
     Eleve** tabEleves;
+    char tmp[100];
+    char tmp1[1];
     switch(affich){
         case 1:
             tabEleves = APP_creationEleve__getAllElevesNOM() ;
@@ -44,7 +46,7 @@ void IHM_afficheEleve__afficherTousEleves(int affich){
         for(j = 0 ; j < (6 - strlen(tabEleves[i]->nom)/2) ; j++){
             printf(" ");
         }
-        printf("%s",tabEleves[i]->nom);
+        printf("%s",strtoupper(tmp,tabEleves[i]->nom)) ;
         if(strlen(tabEleves[i]->nom)%2 == 0 ){
             for(j = 0 ; j < (6 - strlen(tabEleves[i]->nom)/2) ; j++){
                 printf(" ");
@@ -86,7 +88,9 @@ void IHM_afficheEleve__afficherTousEleves(int affich){
         }
         printf("|\n");
        // printf("|");
+
     }
+    free(tabEleves);
  }
 
 void IHM_afficheEleve__MenuListerEleves(){

@@ -123,9 +123,9 @@
 
 1582721819 c:\users\mathieu\documents\github\gestioneleve\app\app_creationnotes.h
 
-1582721819 c:\users\mathieu\documents\github\gestioneleve\util\util_tools.h
+1582894097 c:\users\mathieu\documents\github\gestioneleve\util\util_tools.h
 
-1582721819 source:c:\users\mathieu\documents\github\gestioneleve\util\util_tools.c
+1582894104 source:c:\users\mathieu\documents\github\gestioneleve\util\util_tools.c
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
@@ -146,7 +146,7 @@
 
 1582891401 c:\users\mathieu\documents\github\gestioneleve\ihm\ihm_afficheeleve.h
 
-1582888526 source:c:\users\mathieu\documents\github\gestioneleve\ihm\ihm_afficheeleve.c
+1582894367 source:c:\users\mathieu\documents\github\gestioneleve\ihm\ihm_afficheeleve.c
 	<stdlib.h>
 	<stdio.h>
 	<string.h>
@@ -154,4 +154,5 @@
 	"../defStruct.h"
 	"../APP/APP_creationEleve.h"
 	"../APP/APP_creationNotes.h"
+	"../UTIL/UTIL_tools.h"
 
